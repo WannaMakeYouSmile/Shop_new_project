@@ -3,8 +3,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- ====== Banner Start ====== -->
+    <section class="ud-page-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-banner-content">
+              <h1>Sign Up2</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Banner End ====== -->
+<main class="form-signin text-center ">
 <div class="column is-4 is-offset-4">
-    <h3 class="title">Sign Up1</h3>
     <div class="box">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -14,26 +27,27 @@
         {% endif %}
         {% endwith %}
         <form method="POST" action="/signup">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
-                </div>
+
+             <div class="form-floating">
+      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="Your Email" autofocus="">
+      <label for="floatingInput">Email address</label>
+    </div>
+
+            <div class="form-floating">
+
+                    <input class="form-control" type="text" name="name" placeholder="Name" autofocus="">
+
             </div>
 
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
-                </div>
+            <div class="form-floating">
+
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+
             </div>
 
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
-                </div>
-            </div>
-
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
         </form>
     </div>
 </div>
+</main>
 {% endblock %}
