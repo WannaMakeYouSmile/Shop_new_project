@@ -1,0 +1,146 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flask Auth Example</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lineicons.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ud-styles.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />
+</head>
+
+<body>
+   <!-- ====== Header Start ====== -->
+    <header class="ud-header customheader">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="/">
+                <img src="static/images/logo/logo.svg" alt="Logo" />
+              </a>
+              <button class="navbar-toggler">
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+              </button>
+
+              <div class="navbar-collapse">
+                <ul id="nav" class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                     <a href="{{ url_for('main.index') }}" class="ud-menu-scroll">
+                                Home
+                            </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#pricing">Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#team">Team</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="/#contact">Contact</a>
+                  </li>
+                  <li class="nav-item nav-item-has-children">
+                    <a href="javascript:void(0)"> Pages </a>
+                    <ul class="ud-submenu">
+                      <li class="ud-submenu-item">
+                         <a href="{{ url_for('main.index') }}" class="navbar-item">
+                                Home
+                            </a>
+
+
+                      </li>
+                      <li class="ud-submenu-item">
+                         {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('main.profile') }}" class="navbar-item">
+                                Profile
+                            </a>
+                            {% endif %}
+
+                      </li>
+                      <li class="ud-submenu-item">
+                         {% if not current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
+                                Login
+                            </a>
+                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                                Sign Up
+                            </a>
+                            {% endif %}
+                      </li>
+
+                      <li class="ud-submenu-item">
+                       {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+                                Logout
+                            </a>
+                            {% endif %}
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="navbar-btn d-none d-sm-inline-block">
+
+                  {% if not current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.login') }}" class="ud-main-btn ud-login-btn">
+                                Login
+                            </a>
+                            <a href="{{ url_for('auth.signup') }}" class="ud-main-btn ud-login-btn">
+                                Sign Up
+                            </a>
+                            {% endif %}
+
+
+
+                   {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('auth.logout') }}" class="ud-main-btn ud-white-btn">
+                                Logout
+                            </a>
+                            {% endif %}
+                   {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('main.profile') }}" class="ud-main-btn ud-white-btn">
+                                Profile
+                            </a>
+                            {% endif %}
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ====== Header End ====== -->
+
+
+
+
+               {% block content %}
+               {% endblock %}
+
+   <!-- ====== Back To Top Start ====== -->
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+    <!-- ====== Back To Top End ====== -->
+
+    <!-- ====== All Javascript Files ====== -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+ <title>shop</title>
+{% endblock %}
+
+{% block body %}
+<header>
+     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Додати товар</h1>
+        </div>
+</header>
+<main>
+  <form method="post" class="w-50 p-5">
+      <div class="col-12 p-2">
+              <label for="title" class="form-label">Title</label>
+              <div class="input-group has-validation">
+
+                <input type="text" class="form-control" id="title" placeholder="title" required="" name="title">
+              <div class="invalid-feedback">
+                  Your username is required.
+                </div>
+              </div>
+       </div>
+      <div class="col-12 p-2">
+              <label for="title" class="form-label">Title</label>
+              <div class="input-group has-validation">
+
+                  <input type="number" class="form-control" name="price" id="price" placeholder="price">
+                  <div class="invalid-feedback">
+                  Your username is required.
+                </div>
+              </div>
+       </div>
+
+
+    <button class="btn btn-success w-100 btn-primary btn-lg p-2" type="submit">Додати товар</button>
+  </form>
+  </main>
+{% endblock %}
